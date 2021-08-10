@@ -7,7 +7,7 @@ import { useEffect, useState } from 'react'
 export const getStaticProps = async () => {
   let pokemon: any = [];
 
-  for(let i = 1; i <= 151; i++) {
+  for(let i = 1; i <= 10; i++) {
     const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${i}`)
     const data = await response.json();
     pokemon.push(data);
@@ -38,28 +38,33 @@ const Home = ({ pokemon }: { pokemon: any}) => {
   }
 
   return (
-    <div className={styles.container}>
-      <div className={styles.searchContainer}>
-        <input value={searchValue} onChange={(event) => setSearchValue(event.target.value)} className={styles.input} />
-        <button onClick={onClick} className={styles.button}>
-          <Image src="/search-icon.png" width={20} height={20} alt="" />
-        </button>
+    <>
+      <Head>
+        <title>Pokedex | Home</title>
+      </Head>
+      <div className={styles.container}>
+        <div className={styles.searchContainer}>
+          <input value={searchValue} onChange={(event) => setSearchValue(event.target.value)} className={styles.input} />
+          <button onClick={onClick} className={styles.button}>
+            <Image src="/search-icon.png" width={20} height={20} alt="" />
+          </button>
+        </div>
+        <div className={styles.pokemonList}>
+          { filteredPokemon.length !== 0 ? 
+            filteredPokemon.map((pokemon: any) => (
+              <Link href={"pokemon/" + pokemon.name} key={pokemon.id}>
+                <a className={styles.pokemonCard}>
+                  <div className={styles.imageContainer}>
+                    <img src={pokemon.sprites.front_default} height={100} width={100} alt="" />
+                  </div>
+                  <h3>{ pokemon.name }</h3>
+                </a>
+              </Link>
+            )) : <p>No Pokemon found</p>
+          }
+        </div>
       </div>
-      <div className={styles.pokemonList}>
-        { filteredPokemon.length !== 0 ? 
-          filteredPokemon.map((pokemon: any) => (
-            <Link href={"/" + pokemon.name} key={pokemon.id}>
-              <a className={styles.pokemonCard}>
-                <div className={styles.imageContainer}>
-                  <img src={pokemon.sprites.front_default} height={100} width={100} alt="" />
-                </div>
-                <h3>{ pokemon.name }</h3>
-              </a>
-            </Link>
-          )) : <p>No Pokemon found</p>
-        }
-      </div>
-    </div>
+    </>
   )
 }
 
