@@ -8,8 +8,8 @@
   text-align: center;
   background-color: #fccc02;
   border-radius: 20px;
-  width: 340px;
-  height: 100% !important;
+  line-height: 20px;
+  width: 400px;
 }
 
 .detailsContainer {
