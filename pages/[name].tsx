@@ -40,6 +40,7 @@ export const getStaticProps = async (context: any) => {
  
 const Details = ({ pokemon }: any) => {
   const backgroundsPaths = ["/grass.png", "/coast.jpeg", "/forest.jpeg", "/night.jpeg", "/night-2.jpeg"];
+  const pixelArtworkUrl = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon";
 
   const capitalizeFirstLetter = (string: string) => {
     return string.charAt(0).toUpperCase() + string.slice(1);
@@ -59,7 +60,7 @@ const Details = ({ pokemon }: any) => {
       <div className={styles.container}>
         <div className={styles.imageContainer}>
           <Image className={styles.grassImage} src={backgroundsPaths[randomBackgroundPath()]} layout="fill" objectFit="cover" alt="" />
-          <Image src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${pokemon.id}.png`} height={200} width={200} alt=""/>
+          <Image src={`${pixelArtworkUrl}/${pokemon.id}.png`} height={200} width={200} alt=""/>
         </div>
         <h1>{pokemon.name}</h1>
         <div className={styles.detailsContainer}>

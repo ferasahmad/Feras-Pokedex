@@ -8,7 +8,6 @@
   text-align: center;
   background-color: #fccc02;
   border-radius: 20px;
-  line-height: 20px;
   width: 400px;
 }
 
@@ -24,6 +23,7 @@
 .detailsContainer p {
   margin: 0 0 20px 0;
   font-size: 14px;
+  line-height: 20px;
 }
 
 .imageContainer {
