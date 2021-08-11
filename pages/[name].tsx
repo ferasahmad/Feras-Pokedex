@@ -60,8 +60,8 @@ const Details = ({ pokemon }: any) => {
         <div className={styles.detailsContainer}>
           <p>id: {pokemon.id}</p>
           <p>experience: {pokemon.base_experience}</p>
-          <p>height: {pokemon.height}dm</p>
-          <p>weight: {pokemon.weight}h</p>
+          <p>height: {pokemon.height} dm</p>
+          <p>weight: {pokemon.weight} h</p>
           <p>types: {pokemonType}</p>
         </div>
       </div> 
