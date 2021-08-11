@@ -23,6 +23,7 @@ export const getStaticProps = async () => {
 
 const Home = ({ pokemon }: { pokemon: Pokemon[]}) => {
   const [searchValue, setSearchValue] = useState("");
+  const backgroundsPaths = ["/grass.png", "/coast.jpeg", "/forest.jpeg", "/night.jpeg", "/night-2.jpeg"];
   const [filteredPokemon, setFilteredPokemon] = useState<Pokemon[]>(pokemon);
 
   useEffect(() => {
@@ -36,6 +37,10 @@ const Home = ({ pokemon }: { pokemon: Pokemon[]}) => {
       const newfilteredPokemon = filteredPokemon.filter((pokemonObject: Pokemon) => pokemonObject.name.includes(searchValue));
       setFilteredPokemon(newfilteredPokemon);
     }
+  }
+
+  const randomBackgroundPath = () => {
+    return Math.floor(Math.random() * backgroundsPaths.length)
   }
 
   return (
@@ -56,7 +61,7 @@ const Home = ({ pokemon }: { pokemon: Pokemon[]}) => {
               <Link href={"/" + pokemon.name} key={pokemon.name}>
                 <a className={styles.pokemonCard}>
                   <div className={styles.imageContainer}>
-                    <Image className={styles.grassImage} src="/grass.png" layout="fill" objectFit="cover" alt="" />
+                    <Image className={styles.grassImage} src={backgroundsPaths[randomBackgroundPath()]} layout="fill" objectFit="cover" alt="" />
                     <Image src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${pokemon.url.split('/').slice(-2)[0]}.png`} height={120} width={120} alt="" />
                   </div>
                   <div className={styles.nameContainer}>

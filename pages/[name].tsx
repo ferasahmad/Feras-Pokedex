@@ -39,9 +39,14 @@ export const getStaticProps = async (context: any) => {
 }
  
 const Details = ({ pokemon }: any) => {
+  const backgroundsPaths = ["/grass.png", "/coast.jpeg", "/forest.jpeg", "/night.jpeg", "/night-2.jpeg"];
 
   const capitalizeFirstLetter = (string: string) => {
     return string.charAt(0).toUpperCase() + string.slice(1);
+  }
+
+  const randomBackgroundPath = () => {
+    return Math.floor(Math.random() * backgroundsPaths.length)
   }
 
   const pokemonType: string = pokemon.types.map((poke: any) => poke.type.name).join(", ")
@@ -53,7 +58,7 @@ const Details = ({ pokemon }: any) => {
       </Head>
       <div className={styles.container}>
         <div className={styles.imageContainer}>
-          <Image className={styles.grassImage} src="/grass-2.png" layout="fill" objectFit="cover" alt="" />
+          <Image className={styles.grassImage} src={backgroundsPaths[randomBackgroundPath()]} layout="fill" objectFit="cover" alt="" />
           <Image src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${pokemon.id}.png`} height={200} width={200} alt=""/>
         </div>
         <h1>{pokemon.name}</h1>
