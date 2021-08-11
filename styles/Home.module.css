@@ -22,6 +22,18 @@
   outline: none;
   padding: 0 10px 0 10px;
   font-family: "Press Start 2P";
+  box-sizing: border-box;
+}
+
+.input:hover {
+  background-color: #f1f1f1;
+}
+
+.input:focus {
+  border-bottom-width: 2px;
+  border-bottom-style: solid;
+  background-color: #f1f1f1;
+  border-color: #afafaf;
 }
 
 .button {
@@ -33,13 +45,19 @@
   background-color: #257bba;
 }
 
+.button:hover {
+  background-color: #1d6396;
+}
+
 .pokemonCard {
   display: flex;
+  text-align: center;
   align-items: center;
   box-sizing: border-box;
   flex-direction: column;
-  height: 160px;
-  width: 160px;
+  height: 200px;
+  width: 200px;
+  line-height: 20px;
   background-color: #fccc02;
   margin: 5px;
   padding: 10px;
@@ -47,7 +65,14 @@
   color: black;
   text-decoration: none;
   text-transform: uppercase;
-  font-size: 11px;
+  font-size: 10px;
+}
+
+.pokemonCard:hover {
+  background-color: #f1c100;
+  border-width: 0 2px 2px 0;
+  border-style: solid;
+  border-color: #997a00;
 }
 
 .pokemonList {
@@ -58,6 +83,7 @@
 }
 
 .imageContainer {
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -65,4 +91,14 @@
   background-color: white;
   width: 100%;
   box-sizing: border-box;
+}
+
+.nameContainer {
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+
+.grassImage {
+  border-radius: 10px;
 }

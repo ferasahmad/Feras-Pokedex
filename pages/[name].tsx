@@ -13,7 +13,7 @@ interface Pokemon {
 }
 
 export const getStaticPaths = async () => {
-  const response = await fetch("https://pokeapi.co/api/v2/pokemon?limit=151")
+  const response = await fetch("https://pokeapi.co/api/v2/pokemon?limit=999999")
   const data = await response.json();
 
   const paths = data.results.map((pokemon: Pokemon) => {
@@ -53,14 +53,15 @@ const Details = ({ pokemon }: any) => {
       </Head>
       <div className={styles.container}>
         <div className={styles.imageContainer}>
-          <Image src={pokemon.sprites.front_default} height={200} width={200} alt=""/>
+          <Image className={styles.grassImage} src="/grass-2.png" layout="fill" objectFit="cover" alt="" />
+          <Image src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${pokemon.id}.png`} height={200} width={200} alt=""/>
         </div>
         <h1>{pokemon.name}</h1>
         <div className={styles.detailsContainer}>
           <p>id: {pokemon.id}</p>
           <p>experience: {pokemon.base_experience}</p>
-          <p>height: {pokemon.height}</p>
-          <p>weight: {pokemon.weight}</p>
+          <p>height: {pokemon.height}dm</p>
+          <p>weight: {pokemon.weight}h</p>
           <p>types: {pokemonType}</p>
         </div>
       </div> 

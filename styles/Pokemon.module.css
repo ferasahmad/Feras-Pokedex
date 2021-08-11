@@ -9,6 +9,7 @@
   background-color: #fccc02;
   border-radius: 20px;
   width: 340px;
+  height: 100% !important;
 }
 
 .detailsContainer {
@@ -26,6 +27,7 @@
 }
 
 .imageContainer {
+  position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -33,6 +35,10 @@
   background-color: white;
   width: 100%;
   height: 300px;
+}
+
+.grassImage {
+  border-radius: 10px;
 }
 
 .image {

@@ -6,7 +6,6 @@
   align-items: center;
   box-sizing: border-box;
   position: relative;
-  background-color: #a8d9ff;
   width: 100%;
   padding-bottom: 20px;
 }
@@ -29,14 +28,6 @@ nav {
 
 body {
   margin: 0;
-  min-height: 100%;
+  background-color: #a8d9ff;
   font-family: "Press Start 2P";
-}
-
-html {
-  min-height: 100%;
-}
-
-#__next {
-  min-height: 100%;
 }

@@ -6,22 +6,17 @@ import { useEffect, useState } from 'react'
 
 interface Pokemon {
   name: string
-  id: number
-  sprites: { front_default: string }
+  url: string
 }
 
 export const getStaticProps = async () => {
-  let pokemon: Pokemon[] = [];
 
-  for(let i = 1; i <= 151; i++) {
-    const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${i}`)
-    const data = await response.json();
-    pokemon.push(data);
-  }
+  const response = await fetch(`https://pokeapi.co/api/v2/pokemon?limit=999999`)
+  const data = await response.json();
 
   return {
     props: {
-      pokemon
+      pokemon: data.results
     }
   }
 }
@@ -58,12 +53,15 @@ const Home = ({ pokemon }: { pokemon: Pokemon[]}) => {
         <div className={styles.pokemonList}>
           { filteredPokemon.length !== 0 ? 
             filteredPokemon.map((pokemon: Pokemon) => (
-              <Link href={"/" + pokemon.name} key={pokemon.id}>
+              <Link href={"/" + pokemon.name} key={pokemon.name}>
                 <a className={styles.pokemonCard}>
                   <div className={styles.imageContainer}>
-                    <Image src={pokemon.sprites.front_default} height={100} width={100} alt="" />
+                    <Image className={styles.grassImage} src="/grass.png" layout="fill" objectFit="cover" alt="" />
+                    <Image src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${pokemon.url.split('/').slice(-2)[0]}.png`} height={120} width={120} alt="" />
                   </div>
-                  <h3>{ pokemon.name }</h3>
+                  <div className={styles.nameContainer}>
+                    <h3>{ pokemon.name }</h3>
+                  </div>
                 </a>
               </Link>
             )) : <p>No Pokemon found</p>

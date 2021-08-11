@@ -9,9 +9,8 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
       {/* <Image 
         className="background-image"
         src="/background.png" 
-        layout="fill" 
-        objectFit="cover" 
-        objectPosition="center"
+        layout="fill"
+        objectFit="cover"
         alt=""
       /> */}
       <Navbar />
